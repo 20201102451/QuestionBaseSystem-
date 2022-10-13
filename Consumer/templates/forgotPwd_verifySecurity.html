@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证密保信息</title>
+</head>
+<body>
+<h1>验证密保信息</h1>
+<form method="post" action="/user/forgotPwd/verifySecurity/">
+    {% csrf_token %}
+    密保问题：<span>{{ security_question }}</span>
+    密保答案<input type="text" placeholder="请输入密保答案" name="SecurityAnswerInput">
+    <a href="/user/forgotPwd/resetPassword/"><button type="submit">提交</button></a>
+    <span style="color: red">{{ msg }}</span>
+</form>
+</body>
+</html>

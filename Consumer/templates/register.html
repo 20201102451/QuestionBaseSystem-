@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<body>
+<h2>新用户注册</h2>
+    <form method="post" action="/user/register/">
+        {% csrf_token %}
+        <label for="ConsumerAccount">用户账号</label>
+        <input type="text" name="ConsumerAccount" placeholder="ConsumerAccount">
+        <span style="color: red">{{ error_msg }}</span><br />
+        <label for="ConsumerName">用户名</label>
+        <input type="text" name="ConsumerName" placeholder="ConsumerName"><br />
+        <label for="ConsumerPassword">用户密码</label>
+        <input type="password" name="ConsumerPassword" placeholder="ConsumerPassword"><br />
+        <label for="ConsumerPassword2">再次确认密码</label>
+        <input type="password" name="ConsumerPassword2" placeholder="ConsumerPassword2"><span style="color: red">{{ error_msg2 }}</span><br />
+        <label for="Name">姓名</label>
+        <input type="text" name="Name" placeholder="Name"><br />
+        <label for="Number">手机号</label>
+        <input type="text" name="Number" placeholder="Number"><br />
+        <label for="Birthday">出生日期</label>
+        <input type="date" name="Birthday" placeholder="Birthday"><br />
+        <label for="Email">邮箱</label>
+        <input type="text" name="Email" placeholder="Email"><br />
+        <label for="SecurityQuestion">密保问题</label>
+        <input type="text" name="SecurityQuestion" placeholder="SecurityQuestion"><br />
+        <label for="SecurityAnswer">密保答案</label>
+        <input type="text" name="SecurityAnswer" placeholder="SecurityAnswer"><br />
+        <input type="submit" value="注册">
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>忘记密码</title>
+</head>
+<body>
+<h1>找回密码</h1>
+<form method="post" action="/user/forgotPwd/inputAccount/">
+    {% csrf_token %}
+    <div>请输入您的账号</div><br/>
+    <input type="text" placeholder="在这里输入您的账号" name="userNameGet">
+    <a href="/user/forgotPwd/verifySecurity/"> <button type="submit">下一步</button></a>
+    <span style="color: red">{{ error_msg }}</span>
+</form>
+</body>
+</html>

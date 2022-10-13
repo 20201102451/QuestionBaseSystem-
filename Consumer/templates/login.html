@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+    <h1>用户登录</h1>
+    <form method="post" action="/user/login/">
+        {% csrf_token %}
+        用户名：<input type="text" placeholder="请输入用户名" name="username"><br/>
+        密码：<input type="password" placeholder="请输入密码" name="password"><br/> <span style="color: red">{{ msg_error }}</span><br/>
+        <input type="submit" name="登录" value="登录"> <a href="/user/register/"><button type="button">注册</button></a> <br/>
+        <a href="/user/forgotPwd/inputAccount">忘记密码</a>
+    </form>
+
+</body>
+</html>
