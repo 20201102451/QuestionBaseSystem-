@@ -25,6 +25,7 @@ def register(request):
         ConsumerPassword2 = request.POST.get("ConsumerPassword2")
         Name = request.POST.get("Name")
         Sex = request.POST.get("Sex")
+        print(Sex)
         Number = request.POST.get("Number")
         Birthday = request.POST.get("Birthday")
         Email = request.POST.get("Email")

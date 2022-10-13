@@ -3,33 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
+    <link rel="stylesheet" href="/../static/CSS/register.css">
 </head>
 <body>
-<h2>新用户注册</h2>
-    <form method="post" action="/user/register/">
-        {% csrf_token %}
-        <label for="ConsumerAccount">用户账号</label>
-        <input type="text" name="ConsumerAccount" placeholder="ConsumerAccount">
-        <span style="color: red">{{ error_msg }}</span><br />
-        <label for="ConsumerName">用户名</label>
-        <input type="text" name="ConsumerName" placeholder="ConsumerName"><br />
-        <label for="ConsumerPassword">用户密码</label>
-        <input type="password" name="ConsumerPassword" placeholder="ConsumerPassword"><br />
-        <label for="ConsumerPassword2">再次确认密码</label>
-        <input type="password" name="ConsumerPassword2" placeholder="ConsumerPassword2"><span style="color: red">{{ error_msg2 }}</span><br />
-        <label for="Name">姓名</label>
-        <input type="text" name="Name" placeholder="Name"><br />
-        <label for="Number">手机号</label>
-        <input type="text" name="Number" placeholder="Number"><br />
-        <label for="Birthday">出生日期</label>
-        <input type="date" name="Birthday" placeholder="Birthday"><br />
-        <label for="Email">邮箱</label>
-        <input type="text" name="Email" placeholder="Email"><br />
-        <label for="SecurityQuestion">密保问题</label>
-        <input type="text" name="SecurityQuestion" placeholder="SecurityQuestion"><br />
-        <label for="SecurityAnswer">密保答案</label>
-        <input type="text" name="SecurityAnswer" placeholder="SecurityAnswer"><br />
-        <input type="submit" value="注册">
-    </form>
+    <div class="banner">
+        <h>试题管理系统</h>
+    </div>
+    <div class="theme">
+        <div class="major">
+            <h>注册</h>
+            <form method="post" action="/user/register/">
+                {% csrf_token %}
+                <div>
+                    <ul>
+                        <li>
+                            <span>用户账号</span>
+                            <input type="text" name="ConsumerAccount" placeholder="这里输入用户名">
+                            <span style="color: red">{{ error_msg }}</span>
+                        </li>
+                        <li>
+                            <span>用户名</span>
+                            <input type="text" name="ConsumerName" placeholder="这里输入用户名">
+                        </li>
+                        <li>
+                            <span>用户密码</span>
+                            <input type="password" name="ConsumerPassword" placeholder="这里输入密码">
+                        </li>
+                        <li>
+                            <span>再次确认密码</span>
+                            <input type="password" name="ConsumerPassword2" placeholder="请再次确认密码">
+                            <span style="color: red">{{ error_msg2 }}</span>
+                        </li>
+                        <li>
+                            <span>姓名</span>
+                            <input type="text" name="Name" placeholder="姓名">
+                        </li>
+                        <li>
+                            <span>性别</span>
+                            <label><input type="radio" name="Sex" value="男">男</label>
+                            <label><input type="radio" name="Sex" value="女">女</label>
+                        </li>
+                        <li>
+                            <span>手机号</span>
+                            <input type="text" name="Number" placeholder="手机号">
+                        </li>
+                        <li>
+                            <span>出生日期</span>
+                            <input type="date" name="Birthday">
+                        </li>
+                        <li>
+                            <span>邮箱</span>
+                            <input type="text" name="Email" placeholder="邮箱">
+                        </li>
+                        <li>
+                            <span>密保问题</span>
+                            <input type="text" name="SecurityQuestion" placeholder="这里填写密保问题">
+                        </li>
+                        <li>
+                            <span>密保答案</span>
+                            <input type="text" name="SecurityAnswer" placeholder="这里填写密保答案">
+                        </li>
+                    </ul>
+                    <input class="register" type="submit" value="注册">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!---------------------------------------------------------------------------------------->
+
 </body>
 </html>

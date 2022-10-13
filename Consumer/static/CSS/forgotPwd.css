@@ -13,8 +13,9 @@
 .clear_fix{
     *zoom: 1;
 }
-
-/*-----------------------以上为基础设置------------------------------------*/
+a{
+    text-decoration: none;
+}
 .banner{
     background: #6d6d6d;
     height: 50px;
@@ -26,45 +27,38 @@
     font-size: 30px;
     font-weight: bold;
 }
+.theme {
+    padding-top: 65px;
+    height: 600px;
+    background: #12ada9;
+}
 .major{
     float: left;
     background: white;
+    margin-left: 600px;
     margin-top: 100px;
-    margin-left: 500px;
-    width: 400px;
-    height: 350px;
+    width: 600px;
+    height: 300px;
     text-align: center;
     border-radius:10px;
     padding-top: 50px;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.9);/*边框阴影*/
 }
-h1{
+.major h{
     color: #5dd5c8;
-    font-size: 40px;
+    font-size: 50px;
     margin-bottom: 20px;
 }
-span{
-    font-size: 25px;
-    margin: 10px;
-}
-.input{
+.text1{
     font-size: 20px;
-    width: 200px;
+    margin-top: 15px;
+}
+.input_account{
+    width: 180px;
     height: 30px;
 }
-.login{
-    font-size: 30px;
-    width: 100px;
-    height: 50px;
-    color: white;
-    background: #53cac3;
-    border: none;
-}
-.login:hover{
-    background: #9bf2ed;
-}
 button{
-    font-size: 30px;
+    font-size: 20px;
     width: 100px;
     height: 50px;
     color: white;
@@ -74,23 +68,47 @@ button{
 button:hover{
     background: #9bf2ed;
 }
-a{
-    text-decoration: none;
-    font-size: 20px;
-}
-.theme {
-    padding-top: 65px;
-    height: 600px;
-    background: #12ada9;
-}
-.text_area{
-    float: left;
-    padding-left: 300px;
-    margin-top: 200px;
-    font-weight: bold;
-    font-size: 50px;
+.commit{
+    margin-top: 20px;
+    margin-right: 240px;
+    font-size: 30px;
+    width: 100px;
+    height: 50px;
     color: white;
+    background: #53cac3;
+    border: none;
+}
+.commit:hover{
+    background: #9bf2ed;
+}
+.dev{
+    height: 30px;
+    width: 600px;
 }
 .text2{
-    font-size: 40px;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 120px;
+    float: left;
+}
+.input_password1{
+    margin-left: 80px;
+    float: left;
+    width: 220px;
+    height: 30px;
+}
+.input_password2{
+    margin-left: 20px;
+    float: left;
+    width: 220px;
+    height: 30px;
+}
+.signal{
+    padding-left: 500px;
+    font-size: 50px;
+    font-weight: bold;
+}
+.return_login{
+    font-size: 30px;
+    text-decoration: none;
 }

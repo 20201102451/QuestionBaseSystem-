@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>注册失败</title>
+    <link rel="stylesheet" href="/../static/CSS/forgotPwd.css">
 </head>
 <body>
-<h1>注册失败！</h1>
-<span style="color: red">{{ error_msg }}</span><br/>
-<a href="/user/register/">点击返回注册页面</a>
+    <div class="banner">
+        <h>试题管理系统</h>
+    </div>
+    <div class="theme">
+        <h class="signal">注册失败！</h></br>
+        <span style="color: red">错误信息：{{ error_msg }}</span>
+        <a class="return_login" href="/user/register/">返回注册页面</a>
+    </div>
 </body>
 </html>

@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>用户登录</title>
+    <link rel="stylesheet" href="/../static/CSS/login.css">
 </head>
 <body>
-    <h1>用户登录</h1>
-    <form method="post" action="/user/login/">
+    <div class="banner">
+        <h>试题管理系统</h>
+    </div>
+    <div class="theme">
+        <div class="text_area">
+            <div class="text1">海量试题，在线刷！</div></br>
+            <div class="text2">你最安心的复习神器</div>
+        </div>
+
+        <div class="major">
+        <h1>用户登录</h1>
+        <form method="post" action="/user/login/">
         {% csrf_token %}
-        用户名：<input type="text" placeholder="请输入用户名" name="username"><br/>
-        密码：<input type="password" placeholder="请输入密码" name="password"><br/> <span style="color: red">{{ msg_error }}</span><br/>
-        <input type="submit" name="登录" value="登录"> <a href="/user/register/"><button type="button">注册</button></a> <br/>
+        <div><span>用户名：</span><input class="input" type="text" placeholder="请输入用户名" name="username"></div>
+        <div><span>密 码：</span><input class="input" type="password" placeholder="请输入密码" name="password"><br/> <span style="color: red">{{ msg_error }}</span></div>
+        <input class="login" type="submit" name="登录" value="登录"> <a href="/user/register/"><button type="button">注册</button></a> <br/>
         <a href="/user/forgotPwd/inputAccount">忘记密码</a>
-    </form>
+        </form>
+        </div>
+    </div>
+
 
 </body>
 </html>
