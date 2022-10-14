@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("../img/background_img.jpg");
+}
+.clear_fix:before,.clear_fix:after{
+    content: "";
+    display: table;
+}
+.clear_fix:after{
+    clear: both;
+}
+.clear_fix{
+    *zoom: 1;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+.banner{
+    background: #6d6d6d;
+    height: 50px;
+    padding-top: 15px;
+    padding-left: 200px;
+}
+.banner h{
+    color: #5dd5c8;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.status{
+    float: right;
+}
+.status li{
+    margin-right: 30px;
+    float: right;
+}
+.center_body{/*页面中央部分*/
+    margin: 0 auto;
+    /*background: #53cac3;*/
+    width: 1500px;
+    height: 1100px;
+}
+.title_head{/*首页导航*/
+    background: white;
+    margin: 0px auto;
+    width: 1200px;
+    height: 50px;
+    border-bottom: 2px solid #6d6d6d;
+    border-top: 2px solid #6d6d6d;
+    font-size: 20px;
+    line-height: 50px;
+}
+.title_head a{
+    color: #6d6d6d;
+    margin-left: 60px;
+    width: 120px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+}
+.title_head a:hover{
+    background: #9bf2ed;
+    color: white;
+}
+.major_center{
+    float: left;
+    /*background: tomato;*/
+    width: 1000px;
+    box-sizing: border-box;
+}
+.education_supermarket{
+    padding-top: 50px;
+    float: left;
+    margin-top: 50px;
+    margin-left: 100px;
+    background: white;
+    width: 750px;
+    height: 400px;
+    box-sizing: border-box;
+    border-radius:10px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.9);/*边框阴影*/
+}
+.center_right{
+    float: right;
+    box-sizing: border-box;
+    padding-top: 30px;
+    padding-left: 80px;
+    margin-top: 100px;
+    margin-right: 100px;
+    background: white;
+    width: 400px;
+    height: 500px;
+    border-radius:10px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.9);/*边框阴影*/
+}
+.education_text{
+    margin-left: 100px;
+    font-size: 16px;
+    width: 150px;
+    height: 40px;
+    font-size: 25px;
+    color: black;
+    /*background: tomato;*/
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+}
+.education_text:hover{
+    border-radius: 10px;
+    box-shadow: 0px 5px 3px rgba(0,0,0,0.5);/*边框阴影*/
+}
+.hr_education{
+    margin-top: 15px;
+    margin-left: 80px;
+    width: 250px;
+}
+.inner_education{
+    margin-top: 35px;
+    float: left;
+    margin-left: 30px;
+    width: 150px;
+    height: 200px;
+    text-align: center;
+    display: inline-block;
+}
+.inner_education:hover{
+    border-radius: 10px;
+    box-shadow: 0px 5px 3px rgba(0,0,0,0.5);/*边框阴影*/
+}
+.inner_text1{
+    color: black;
+    font-size: 24px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.inner_text2{
+    color: #6d6d6d;
+    margin-top: 20px;
+    font-size: 20px;
+    display: inline-block;
+}
+.center_right a{
+    color: #6d6d6d;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 20px;
+}
+.center_right_text{
+    font-size: 30px;
+}
+.demo_line{
+    float: left;
+    margin-top: 30px;
+    margin-left: 100px;
+    width: 650px;
+    border-radius: 10px;
+    background: #5dd5c8;
+    height: 20px;
+}
+.demo_line_right{
+    float: left;
+    margin-top: 10px;
+    width: 350px;
+    border-radius: 10px;
+    background: #5dd5c8;
+    height: 20px;
+}
+.education_text2{
+    margin-left: 100px;
+    font-size: 16px;
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+    color: black;
+    /*background: tomato;*/
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+}
+.education_text2:hover{
+    border-radius: 10px;
+    box-shadow: 0px 5px 3px rgba(0,0,0,0.5);/*边框阴影*/
+}
+.footer{
+    height: 300px;
+    background: #6d6d6d;
+}
+.author ul{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 100px;
+}
+.text_footer1{
+    margin-right: 30px;
+}
