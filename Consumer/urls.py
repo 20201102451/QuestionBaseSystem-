@@ -7,5 +7,5 @@ urlpatterns = [
     path('forgotPwd/inputAccount/',views.forgot_inputAccount),
     path('forgotPwd/verifySecurity/',views.forgot_verifySecurity),
     path('forgotPwd/resetPassword/',views.forgot_resetPassword),
-    path('modify/',views.modify),
+    path('<str:useraccount>/modify/',views.modify),
 ]

@@ -10,7 +10,7 @@ def login(request):
         consumerAccount = request.POST.get("username")
         consumerPWD = request.POST.get("password")
         if Consumer.models.Consumer.objects.filter(consumer_account=consumerAccount,consumer_password=consumerPWD).exists():
-            return render(request, 'index.html')
+            return render(request, 'index.html',{'useraccount':consumerAccount})
         else:
             msg_error = "用户名或密码错误"
             return render(request, "login.html", {"msg_error": msg_error})
@@ -39,16 +39,18 @@ def register(request):
         else:
             try:
                 save_id = transaction.savepoint()
-                Consumer.models.Consumer.objects.create(consumer_account=ConsumerAccount,
-                                                        consumer_name=ConsumerName,
-                                                        consumer_password=ConsumerPassword,
-                                                        name=Name,
-                                                        sex=Sex,
-                                                        number=Number,
-                                                        birthday=Birthday,
-                                                        email=Email,
-                                                        security_question=SecurityQuestion,
-                                                        security_answer=SecurityAnswer)
+                Consumer.models.Consumer.objects.create(
+                    consumer_account=ConsumerAccount,
+                    consumer_name=ConsumerName,
+                    consumer_password=ConsumerPassword,
+                    name=Name,
+                    sex=Sex,
+                    number=Number,
+                    birthday=Birthday,
+                    email=Email,
+                    security_question=SecurityQuestion,
+                    security_answer=SecurityAnswer
+                )
                 transaction.savepoint_commit(save_id)
             except Exception as e:
                 transaction.savepoint_rollback(save_id)
@@ -88,5 +90,37 @@ def forgot_resetPassword(request):
         else:
             Consumer.models.Consumer.objects.update(consumer_password=passwordFirst)
             return render(request, 'resetPasswordSuccessful.html')
-def modify(request):
-    return render(request,'modify.html')
+def modify(request,useraccount):
+    if request.method == 'GET':
+        # print(useraccount)
+        user_row = Consumer.models.Consumer.objects.filter(consumer_account=useraccount).first()
+        # print(user_row.consumer_account)
+        return render(request,'modify.html',{'user_row':user_row,"useraccount":useraccount})
+    else:
+        ConsumerName = request.POST.get("ConsumerName")
+        Name = request.POST.get("Name")
+        Sex = request.POST.get("Sex")
+        Number = request.POST.get("Number")
+        Birthday = request.POST.get("Birthday")
+        Email = request.POST.get("Email")
+        SecurityQuestion = request.POST.get("SecurityQuestion")
+        SecurityAnswer = request.POST.get("SecurityAnswer")
+        try:
+            save_id = transaction.savepoint()
+            Consumer.models.Consumer.objects.filter(consumer_account=useraccount).update(
+                consumer_name=ConsumerName,
+                name=Name,
+                sex=Sex,
+                number=Number,
+                birthday=Birthday,
+                email=Email,
+                security_question=SecurityQuestion,
+                security_answer=SecurityAnswer
+            )
+            transaction.savepoint_commit(save_id)
+        except Exception as e:
+            transaction.savepoint_rollback(save_id)#首先回滚数据库
+            return render(request, "modify_false.html", {"error_msg": str(e),"useraccount": useraccount})
+            '''传递错误信息到前端页面展示'''
+            '''无异常则代表修改个人信息成功，返回成功页，为用户提供返回首页接口'''
+        return render(request, "modify_successful.html", {"useraccount": useraccount})

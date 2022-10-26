@@ -12,42 +12,50 @@
     <div class="theme">
         <div class="major">
             <h>修改个人信息</h>
-            <form method="post" action="/user/modify/">
+            <form method="post" action="/user/{{ useraccount }}/modify/">
                 {% csrf_token %}
                 <div>
                     <ul>
                         <li>
                             <span>用户名</span>
-                            <input type="text" name="ConsumerName" placeholder="这里输入用户名">
+                            <input type="text" name="ConsumerName" placeholder="这里输入用户名" value="{{ user_row.consumer_name }}">
                         </li>
                         <li>
                             <span>姓名</span>
-                            <input type="text" name="Name" placeholder="姓名">
+                            <input type="text" name="Name" placeholder="姓名" value="{{ user_row.name}}">
                         </li>
                         <li>
                             <span>性别</span>
-                            <label><input type="radio" name="Sex" value="男">男</label>
-                            <label><input type="radio" name="Sex" value="女">女</label>
+                            {% if user_row.sex == "男" %}
+                                <label><input type="radio" name="Sex" value="男" checked>男</label>
+                                <label><input type="radio" name="Sex" value="女">女</label>
+                            {% elif user_row.sex == '女' %}
+                                <label><input type="radio" name="Sex" value="男">男</label>
+                                <label><input type="radio" name="Sex" value="女" checked>女</label>
+                            {% else %}
+                                <label><input type="radio" name="Sex" value="男">男</label>
+                                <label><input type="radio" name="Sex" value="女">女</label>
+                            {% endif %}
                         </li>
                         <li>
                             <span>手机号</span>
-                            <input type="text" name="Number" placeholder="手机号">
+                            <input type="text" name="Number" placeholder="手机号" value="{{ user_row.number }}">
                         </li>
                         <li>
                             <span>出生日期</span>
-                            <input type="date" name="Birthday">
+                            <input type="date" name="Birthday" value="{{ user_row.birthday|safe }}">
                         </li>
                         <li>
                             <span>邮箱</span>
-                            <input type="text" name="Email" placeholder="邮箱">
+                            <input type="text" name="Email" placeholder="邮箱" value="{{ user_row.email }}">
                         </li>
                         <li>
                             <span>密保问题</span>
-                            <input type="text" name="SecurityQuestion" placeholder="这里填写密保问题">
+                            <input type="text" name="SecurityQuestion" placeholder="这里填写密保问题" value="{{ user_row.security_question }}">
                         </li>
                         <li>
                             <span>密保答案</span>
-                            <input type="text" name="SecurityAnswer" placeholder="这里填写密保答案">
+                            <input type="text" name="SecurityAnswer" placeholder="这里填写密保答案" value="{{ user_row.security_answer }}">
                         </li>
                     </ul>
                     <input class="register" type="submit" value="保存">
