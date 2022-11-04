@@ -10,6 +10,7 @@ def login(request):
         consumerAccount = request.POST.get("username")
         consumerPWD = request.POST.get("password")
         if Consumer.models.Consumer.objects.filter(consumer_account=consumerAccount,consumer_password=consumerPWD).exists():
+            request.session["userNameGet"] = request.POST.get("username")
             return render(request, 'index.html',{'useraccount':consumerAccount})
         else:
             msg_error = "用户名或密码错误"

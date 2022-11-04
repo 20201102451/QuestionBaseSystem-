@@ -23,5 +23,6 @@ urlpatterns = [
     path('user/', include('Consumer.urls')),
     path('index/', include('index.urls')),
     path('exam/', include('exam.urls')),
+    path('collectTestpaper/',include('CollectTestpaper.urls')),
 
 ]

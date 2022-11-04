@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/collectTestpaper/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="lala" value="这里是文本内容中的内容">
+        上传文件：<input type="file" name="上传的文件" multiple></br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

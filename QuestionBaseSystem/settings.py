@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Consumer.apps.ConsumerConfig',
     'index.apps.IndexConfig',
     'exam.apps.ExamConfig',
+    'CollectTestpaper.apps.CollecttestpaperConfig',
 ]
 
 MIDDLEWARE = [
@@ -111,9 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'zh-hans'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
