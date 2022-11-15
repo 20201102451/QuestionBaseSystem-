@@ -2,14 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>上传试卷</title>
+    <link rel="stylesheet" href="/../static/CSS/collect.css">
 </head>
 <body>
-    <form method="post" action="/collectTestpaper/" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="text" name="lala" value="这里是文本内容中的内容">
-        上传文件：<input type="file" name="上传的文件" multiple></br>
-        <input type="submit" value="提交">
-    </form>
+    <div class="banner">
+        <h>试题管理系统</h>
+    </div>
+    <h1 style="line-height: 50px; margin-top: 50px;margin-left: 120px; color: #6d6d6d">上传试卷</h1>
+    <div class="inner_body">
+        <form method="post" action="/collectTestpaper/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <ul>
+                <li>
+                    上传试卷文件：<input type="file" name="上传的文件" multiple>
+                </li>
+                <hr>
+                <li>
+                    <h>请选择试卷难度</h>
+                    <select name="Hard">
+                        <option value="0">简单</option>
+                        <option value="1">中等</option>
+                        <option value="2">较难</option>
+                        <option value="3">难</option>
+                        <option value="4">很难</option>
+                    </select>
+                </li>
+                <hr>
+                <li>
+                    <h>出卷时间</h>
+                    <input type="date" name="Apply_time">
+                </li>
+                <hr>
+                <li>
+                    <h>请输入试卷描述：</h>
+                    <textarea name="Intro" cols="40" rows="10"></textarea>
+                </li>
+            </ul>
+            <div class="inner_foot">
+                <input type="submit" value="提交">
+                <a href="/admin/"><button>返回管理页面</button></a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

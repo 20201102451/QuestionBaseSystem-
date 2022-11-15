@@ -9,7 +9,8 @@ def test(request):
         return render(request, 'test.html')
     else:
         global files;
-        files = docx.Document(request.FILES.get('上传的文件'))
+        x_get = request.FILES.get('上传的文件')
+        files = docx.Document(x_get)
         # testChoice()#获取选择题
         # testJudge()#获取判断题
         # testInput()#获取填空题
@@ -21,12 +22,17 @@ def test(request):
         choiceList = testChoice()
         judgeList = testJudge()
         inputList = testInput()
+        Hard = request.POST.get("Hard")#读取试卷难度
+        Apply_time = request.POST.get("Apply_time")#读取出卷时间
+        Intro = request.POST.get("Intro")
         try:
             save_id_testpaper = transaction.savepoint()
-            '''插入试卷名'''
+            '''插入试卷'''
+            if x_get == None:
+                raise Exception("请先上传文件！")
             if models.Testpaper.objects.filter(name=titleString).exists():
                 raise Exception("试卷已存在！")
-            models.Testpaper.objects.create(name=titleString)#Successful for test!
+            models.Testpaper.objects.create(name=titleString, hard=Hard, apply_time=Apply_time, intro=Intro)#Successful for test!
 
             '''接下来插入判断题'''
             for i in judgeList:
@@ -73,7 +79,7 @@ def test(request):
         except Exception as e:
             transaction.savepoint_rollback(save_id_testpaper)
             return HttpResponse("插入失败：" + str(e))
-        return HttpResponse("hello")
+        return render(request, 'testSuccessful.html')
 def testChoice():
     choiceList = []#选择题总容器
     k = 0
