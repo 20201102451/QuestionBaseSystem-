@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <link rel="stylesheet" href="/../static/CSS/index.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        .text_body {
+            display: flex;
+        }
+
+        .left {
+            flex: 1;
+        }
+
+        .right {
+            flex: 3;
+        }
+        .text{
+            margin: 10px ;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <a href="/index/">
+        <h>试题管理系统</h>
+    </a>
+    <div class="status">
+        <ul>
+            <li><a href="/user/login/">
+                <h>切换账号</h>
+            </a></li>
+            <li><a href="/index/personalCenter/">
+                <h>我的题库中心</h>
+            </a></li>
+            <li><a href="/user/{{ useraccount }}/modify/">
+                <h>个人中心</h>
+            </a></li>
+            <li><a href="#">
+                <h>我的博客</h>
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <h1 style="text-align: center">{{ test.name }}</h1>
+    <div class="text_body">
+        <div class="left">
+            <div><img src="../../static/img/img.png" alt="" width="120px" height="144px"></div>
+            <p class="text" style="margin-left: 0">题目难度：{{ test.get_hard_display }}</p>
+        </div>
+        <div class="right">
+
+            <div class="text" style="width: 600px">{{ test.intro }}</div>
+
+            <div  class="text">出题时间：{{ test.apply_time }}</div>
+            <div  class="text">已被订阅人数：{{ count }}  </div>
+
+            {% if status == 0 %}
+                <a href="/index/add?id={{ test.testpaper_id }}"><div class="btn btn-info"> 添加入到我的题库</div></a>
+                {% else %}
+                <a href="/index/delete?id={{ test.testpaper_id }}"><div class="btn btn-info"> 删除题库</div></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="author">
+        <ul>
+            <li>
+                <span class="text_footer1">@author</span>
+                <span class="text_footer2">&ensp;@number</span>
+            </li>
+            <li>
+                <span class="text_footer1">范斌</span>
+                <span class="text_footer2">&ensp;&ensp;18647377201</span>
+            </li>
+            <li>
+                <span class="text_footer1">梁琛宙</span>
+                <span class="text_footer2">13394893813</span>
+            </li>
+            <li>
+                <span class="text_footer1">章宇翔</span>
+                <span class="text_footer2">18355184261</span>
+            </li>
+            <li>
+                <span class="text_footer1">石帅龙</span>
+                <span class="text_footer2">18947787100</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

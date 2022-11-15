@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教育超市</title>
+    <link rel="stylesheet" href="/../static/CSS/index.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        .center {
+            width: 600px;
+            margin: 80px auto;
+            text-align: center;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: #6d6d6d 1px solid;
+            font-size: 56px;
+        }
+
+        .center1 {
+            width: 600px;
+            margin: 10px auto;
+            text-align: center;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: #6d6d6d 1px solid;
+            font-size: 56px;
+        }
+
+        .column {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .left {
+            flex: 1;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        .right {
+            flex: 1;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 36px;
+
+        }
+
+        .num {
+            color: rgb(25, 214, 172);
+            font-weight: bold;
+
+
+        }
+        a{
+            color: black;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <a href="/index/">
+        <h>试题管理系统</h>
+    </a>
+    <div class="status">
+        <ul>
+            <li><a href="/user/login/">
+                <h>切换账号</h>
+            </a></li>
+            <li><a href="/index/personalCenter/">
+                <h>我的题库中心</h>
+            </a></li>
+            <li><a href="/user/{{ useraccount }}/modify/">
+                <h>个人中心</h>
+            </a></li>
+            <li><a href="#">
+                <h>我的博客</h>
+            </a></li>
+        </ul>
+    </div>
+</div>
+<div class=" container-fluid">
+    <h1 class="center">以有价之物兑无价之宝</h1>
+
+    <div class="row column">
+        <div class="left" style="padding-top: 40px">
+            <p class="center1" style="border: none">最新上架</p>
+            {% for item in rank_time_text %}
+                <div class="column">
+                    <div class="left num">- 0{{ forloop.counter }} -</div>
+
+                    <div class="right" style="flex: 2;text-align: left"><a href="/index/test/?id={{ item.testpaper_id }}">{{ item.name }}</a></div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="right">
+            <p class="center1" style="border: none">热门排行</p>
+            {% for v in rank_hot_lis %}
+
+
+                <div class="column">
+                    <div class="left num">- 0{{ forloop.counter }} -</div>
+                    {% for k,y in v.items %}
+
+                        <div class="right" style="flex: 2;text-align: left"><a href="/index/test/?id={{ y.testpaper_id }}">{{ y.name }}</a></div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<hr>
+<div class="" style="width: 1300px">
+    {% for item in all %}
+        <div style="display: inline-block;width: 600px;margin-left: 17px;margin-top: 10px;text-align: center">
+            <a href="/index/test/?id={{ item.testpaper_id }}">
+                <p style="margin-left: 50%;" class="left">
+                    {{ item.name }}
+                </p></a>
+        </div>
+    {% endfor %}
+
+</div>
+
+<div class="footer">
+    <div class="author">
+        <ul>
+            <li>
+                <span class="text_footer1">@author</span>
+                <span class="text_footer2">&ensp;@number</span>
+            </li>
+            <li>
+                <span class="text_footer1">范斌</span>
+                <span class="text_footer2">&ensp;&ensp;18647377201</span>
+            </li>
+            <li>
+                <span class="text_footer1">梁琛宙</span>
+                <span class="text_footer2">13394893813</span>
+            </li>
+            <li>
+                <span class="text_footer1">章宇翔</span>
+                <span class="text_footer2">18355184261</span>
+            </li>
+            <li>
+                <span class="text_footer1">石帅龙</span>
+                <span class="text_footer2">18947787100</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -28,34 +28,17 @@
         </div>
         <div class="major_center">
             <div class="education_supermarket">
-                <a class="education_text" href="#">教育超市</a>
+                <a class="education_text" href="/index/educater_supermarket/">教育超市</a>
                 <hr class="hr_education">
                 <ul>
+                    {% for item in rank_four %}
                     <li>
-                        <a class="inner_education" href="#">
-                            <span class="inner_text1">算法入门训练</span>
+                        <a class="inner_education" href="/index/test?id={{ item.testpaper_id }}">
+                            <span class="inner_text1">{{ item.name }}</span>
                             <span class="inner_text2">入门算法必刷练习题库</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="inner_education" href="#">
-                            <span class="inner_text1">算法入门训练</span>
-                            <span class="inner_text2">入门算法必刷练习题库</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="inner_education" href="#">
-                            <span class="inner_text1">算法入门训练</span>
-                            <span class="inner_text2">入门算法必刷练习题库</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="inner_education" href="#">
-                            <span class="inner_text1">算法入门训练</span>
-                            <span class="inner_text2">入门算法必刷练习题库</span>
-                        </a>
-                    </li>
-
+                    {% endfor %}
                 </ul>
             </div>
         </div>

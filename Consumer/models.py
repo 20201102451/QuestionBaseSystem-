@@ -13,3 +13,11 @@ class Consumer(models.Model):
     email = models.CharField(max_length=50, blank=True, null=True)
     security_question = models.CharField(max_length=255, blank=True, null=True)
     security_answer = models.CharField(max_length=255, blank=True, null=True)
+
+#表格：谁订阅了那张试卷
+class Consumer_testPaper_first(models.Model):
+    consumer = models.ForeignKey(to="Consumer",to_field ="consumer_id",on_delete=models.CASCADE, verbose_name="用户id")
+    testpaper = models.ForeignKey(to="CollectTestpaper.Testpaper",to_field ="testpaper_id",on_delete=models.CASCADE, verbose_name="试卷id")
+    class Meta:
+        verbose_name = '用户订阅'
+        verbose_name_plural = '用户订阅'

@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
+from CollectTestpaper.models import Testpaper
+from Consumer.models import Consumer_testPaper_first, Consumer
 import Consumer.models
 from django.db import transaction
 # Create your views here.
@@ -11,7 +13,28 @@ def login(request):
         consumerPWD = request.POST.get("password")
         if Consumer.models.Consumer.objects.filter(consumer_account=consumerAccount,consumer_password=consumerPWD).exists():
             request.session["userNameGet"] = request.POST.get("username")
-            return render(request, 'index.html',{'useraccount':consumerAccount})
+            rank_time = Testpaper.objects.all().order_by("-apply_time")  # 拿到通过时间排序的所有试卷数据
+
+            # 订阅量排序
+            rank_hot_lis = []
+            rank_four = list(rank_time)[:2]  # 前两个时间排序的数据
+
+            for i in rank_time:
+                # i是一张试卷：id
+                rank_hot = {}
+                # 订阅这张试卷的人数
+                count = Consumer_testPaper_first.objects.filter(testpaper_id=i.testpaper_id).count()
+                # 字典{}
+                rank_hot[i.testpaper_id] = {'count': count, "name": i.name, "testpaper_id": i.testpaper_id}
+                rank_hot_lis.append(rank_hot)
+            # 拿到一个count排序的列表
+            # 通过你定义的变量进行排序
+            rank_hot_lis = sorted(rank_hot_lis, key=lambda x: list(x.values())[0]['count'], reverse=True)
+            # print(rank_hot_lis)
+            # 把前两个通过count排序的数据添加
+            rank_four.append(list(rank_hot_lis[0].values())[0])
+            rank_four.append(list(rank_hot_lis[1].values())[0])
+            return render(request, 'index.html', {'useraccount': consumerAccount, "rank_four": rank_four})
         else:
             msg_error = "用户名或密码错误"
             return render(request, "login.html", {"msg_error": msg_error})
@@ -26,7 +49,6 @@ def register(request):
         ConsumerPassword2 = request.POST.get("ConsumerPassword2")
         Name = request.POST.get("Name")
         Sex = request.POST.get("Sex")
-        print(Sex)
         Number = request.POST.get("Number")
         Birthday = request.POST.get("Birthday")
         Email = request.POST.get("Email")
