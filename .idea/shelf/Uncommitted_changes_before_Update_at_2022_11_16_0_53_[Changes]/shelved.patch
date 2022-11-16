@@ -1,0 +1,40 @@
+Index: Consumer/models.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.db import models\r\n\r\n# Create your models here.\r\nclass Consumer(models.Model):\r\n    consumer_id = models.BigAutoField(primary_key=True)\r\n    consumer_account = models.CharField(max_length=40, blank=True, null=True)\r\n    consumer_name = models.CharField(max_length=40, blank=True, null=True)\r\n    consumer_password = models.CharField(max_length=40, blank=True, null=True)\r\n    name = models.CharField(max_length=50, blank=True, null=True)\r\n    sex = models.CharField(max_length=2, blank=True, null=True)\r\n    number = models.CharField(max_length=12, blank=True, null=True)\r\n    birthday = models.DateField(blank=True, null=True)\r\n    email = models.CharField(max_length=50, blank=True, null=True)\r\n    security_question = models.CharField(max_length=255, blank=True, null=True)\r\n    security_answer = models.CharField(max_length=255, blank=True, null=True)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Consumer/models.py b/Consumer/models.py
+--- a/Consumer/models.py	(revision 505a448b6f7f3c1d72bd1edceb6ae59167fe2730)
++++ b/Consumer/models.py	(date 1668525837376)
+@@ -1,5 +1,5 @@
+ from django.db import models
+-
++from CollectTestpaper.models import Question,Testpaper
+ # Create your models here.
+ class Consumer(models.Model):
+     consumer_id = models.BigAutoField(primary_key=True)
+@@ -12,4 +12,19 @@
+     birthday = models.DateField(blank=True, null=True)
+     email = models.CharField(max_length=50, blank=True, null=True)
+     security_question = models.CharField(max_length=255, blank=True, null=True)
+-    security_answer = models.CharField(max_length=255, blank=True, null=True)
+\ No newline at end of file
++    security_answer = models.CharField(max_length=255, blank=True, null=True)
++
++class Consumer_testpaper(models.Model):
++    consumer_id = models.ForeignKey(to="Consumer", to_field="consumer_id", on_delete=models.CASCADE, verbose_name="用户id")
++    testpaper_id = models.ForeignKey(to="Testpaper", to_field="testpaper_id", on_delete=models.CASCADE, verbose_name="试卷id")
++    class Meta:
++        verbose_name = '用户订阅'
++        verbose_name_plural = '用户订阅'
++class Consumer_answer_status(models.Model):
++    consumer_id = models.ForeignKey(to="Consumer", to_field="consumer_id", on_delete=models.CASCADE, verbose_name="用户id")
++    testpaper_id = models.ForeignKey(to="Testpaper", to_field="testpaper_id", on_delete=models.CASCADE, verbose_name="试卷id")
++    question_id = models.ForeignKey(to="Question", to_field="question_id", on_delete=models.CASCADE, verbose_name="试题id")
++    answer = models.CharField(max_length=255, blank=True, null=True, verbose_name="用户答案")
++    class Meta:
++        verbose_name = '用户答题情况'
++        verbose_name_plural = '用户答题情况'
+\ No newline at end of file

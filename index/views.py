@@ -14,7 +14,7 @@ def personalCenter2(request):
     return render(request, 'PersonalCenter2.html', {'useraccount': useraccount})
 #修改index
 def index(request):
-    #
+    #"userNameGet
     useraccount = request.session['userNameGet']
     # orm封装好的排序函数
     # orm：封装了mysql底层代码：简单实现增删改查
@@ -66,7 +66,7 @@ def test(request):
     # 通过用户id找一下表里面有他和这个试卷的的数据没
     # request.session.get("userNameGet")--用户名
     consumer_name=request.session.get("userNameGet")
-    consumer_id = Consumer.objects.filter(consumer_name=consumer_name).values()[0]['consumer_id']
+    consumer_id = Consumer.objects.filter(consumer_account=consumer_name).values()[0]['consumer_id']
     print(consumer_id)
     if len(Consumer_testPaper_first.objects.filter(consumer=consumer_id,testpaper=id))>0:
         status = 1
