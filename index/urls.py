@@ -11,4 +11,5 @@ urlpatterns = [
     path('test/',views.test),
     path('delete/',views.delete),
     path('add/',views.add),
+    path('personalCenter/delete/',views.personalCenterDelete),
 ]

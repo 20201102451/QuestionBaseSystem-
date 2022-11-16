@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class Consumer(models.Model):
     consumer_id = models.BigAutoField(primary_key=True)
@@ -21,3 +20,12 @@ class Consumer_testPaper_first(models.Model):
     class Meta:
         verbose_name = '用户订阅'
         verbose_name_plural = '用户订阅'
+
+class Consumer_answer_status(models.Model):
+    consumer_id = models.ForeignKey(to="Consumer",to_field ="consumer_id",on_delete=models.CASCADE, verbose_name="用户id")
+    testpaper_id = models.ForeignKey(to="CollectTestpaper.Testpaper",to_field ="testpaper_id",on_delete=models.CASCADE, verbose_name="试卷id")
+    question_id = models.ForeignKey(to="CollectTestpaper.Question", to_field="question_id", on_delete=models.CASCADE, verbose_name="试题id")
+    answer = models.CharField(max_length=255, blank=True, null=True,verbose_name="用户答案")
+    class Meta:
+        verbose_name = '用户答题情况'
+        verbose_name_plural = '用户答题情况'

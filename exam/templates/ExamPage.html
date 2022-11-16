@@ -2,24 +2,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>考试页面</title>
-</head>
-<body>
-    <div class ="border_style" style="text-align:center">
-        试卷内容
-    </div>
-    <style type="text/css">
-        .hidden{
-            display: none;
+    <title>考试试卷</title>
+    <link rel="stylesheet" href="/../static/CSS/PersonalCenter.css">
+    <style>
+        .center_li{
+            background-color: #ffffff;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-radius: 10px;
+            padding-left: 20px;
+            padding-bottom: 10px;
         }
-        .border_style{
-            border: 2px solid #000;
-            width: 1200px;
-            height:500px;
+        .choices{
+            margin-left: 15px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        .stems{
+            font-size: 18px;
+        }
+        .head1{
+            font-size: 20px;
+        }
+        .static_submit{
+            position:fixed;
+            left:300px;
+            top:750px;
+            {#background-color:pink;#}
+        }
+        .inner_submit{
+            height: 40px;
+            width: 100px;
+            line-height: 40px;
+            font-size: 30px;
+            background-color: #9bf2ed;
+            border-radius: 10px;
+        }
+        .inner_submit:hover{
+            background-color: #53cac3;
         }
     </style>
-     <div style="text-align:center">
-     <br /> <button>交卷</button>     <a href="/exam/answer"><button>查看解析</button></a>
-     </div>
+</head>
+<body>
+    <div class="banner">
+        <a href="/index/"><h>试题管理系统</h></a>
+        <div class="status">
+            <ul>
+                <li><a href="/user/login/"><h>切换账号</h></a></li>
+                <li><a href="/index/personalCenter/"><h>我的题库中心</h></a></li>
+                <li><a href="/user/{{ useraccount }}/modify/"><h>个人中心</h></a></li>
+                <li><a href="#"><h>我的博客</h></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="center_left">
+        <img class="new_pk01" src="/../static/img/newpk01.png" alt="">
+        <div class="new_pk02"><img src="/../static/img/newpk02.png" alt=""></div>
+    </div>
+
+    <div class="center_right">
+        <form action="/exam/?TestpaperID={{ TestpaperID }}" method="post">
+        {% csrf_token %}
+            <div class="head1">选择题 (共{{ ChoiceScores }}分 每题2分)</div>
+            <div class="head1" style="float: right; margin-right: 50px;">当前总分：{{ consumerSumScore }}</div>
+            <ul>
+                {% for obj in ChoiceData %}
+                    <li class="center_li">
+                    <span class="stems">{{ obj.8 }}.{{ obj.0 }}</span><br>
+                        <label class="choices">
+                            <input type="radio" name="{{ obj.7 }}" value="A"> <span>{{ obj.1 }}</span>
+                        </label>
+                        <br>
+                        <label class="choices">
+                            <input type="radio" name="{{ obj.7 }}" value="B"> <span>{{ obj.2 }}</span>
+                        </label>
+                        <br>
+                        <label class="choices">
+                            <input type="radio" name="{{ obj.7 }}" value="C"> <span>{{ obj.3 }}</span>
+                        </label>
+                        <br>
+                        <label class="choices">
+                            <input type="radio" name="{{ obj.7 }}" value="C"> <span>{{ obj.4 }}</span>
+                        </label>
+                        <br>
+                        <label class="choices">
+                            {% if obj.9 == obj.6 %}
+                            <div style="color: green">上次答案：{{ obj.9 }}</div><div>正确答案：{{ obj.6 }}</div>
+                            {% elif obj.9 == None %}
+                            {% else %}
+                            <div style="color: red">上次答案：{{ obj.9 }}</div><div>正确答案：{{ obj.6 }}</div>
+                            {% endif %}
+                        </label>
+                        <br>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="head1">判断题 (共{{ TrueOrFalseScores }}分 每题1分)</div>
+            <ul>
+                {% for obj in TrueOrFalseData %}
+                    <li class="center_li">
+                        <span class="stems">{{ obj.4 }}.{{ obj.0 }}</span><br>
+                        <label class="choices"><input type="radio" name="{{ obj.3 }}" value="T"> T</label><br>
+                        <label class="choices"><input type="radio" name="{{ obj.3 }}" value="F"> F</label><br>
+                        <label class="choices">
+                            {% if obj.5 == obj.2 %}
+                            <div style="color: green">上次答案：{{ obj.5 }}</div><div>正确答案：{{ obj.2 }}</div>
+                            {% elif obj.5 == None %}
+                            {% else %}
+                            <div style="color: red">上次答案：{{ obj.5 }}</div><div>正确答案：{{ obj.2 }}</div>
+                            {% endif %}
+                        </label>
+                        <br>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="head1">填空题 (共{{ GapfillScores }}分 每题3分)</div>
+            <ul>
+                {% for obj in GapfillData %}
+                    <li class="center_li">
+                        <span class="stems">{{ obj.4 }}.{{ obj.0 }}</span><br>
+                        <label class="choices">答案：<input name="{{ obj.3 }}" type="text"></label>
+                        <label class="choices">
+                            {% if obj.5 == obj.2 %}
+                            <div style="color: green">上次答案：{{ obj.5 }}</div><div>正确答案：{{ obj.2 }}</div>
+                            {% elif obj.5 == None or obj.5 == "" %}
+                            {% else %}
+                            <div style="color: red">上次答案：{{ obj.5 }}</div><div>正确答案：{{ obj.2 }}</div>
+                            {% endif %}
+                        </label>
+                        <br>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="static_submit">
+                <input class="inner_submit" type="submit" name="提交" value="交卷">
+                <br>
+                <div style="font-size: 25px; color: red">在这里交卷！</div>
+            </div>
+        </form>
+    </div>
+    <div class="center_left_text">建议反馈：1348757279@qq.com<br>
+        <span style="font-size: 25px;margin-top: 10px;color: red">注意：填空题如有多个空，答案需使用顿号“、”隔开！</span></div>
 </body>
 </html>

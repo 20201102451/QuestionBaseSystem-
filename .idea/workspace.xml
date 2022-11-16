@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5501640-d235-4ee1-9d2f-514ac20e076d" name="Changes" comment="solve some problems&#10;8th commit by Fan">
-      <change beforePath="$PROJECT_DIR$/venv/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/venv/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Consumer/migrations/0003_consumer_answer_status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/QuestionBaseSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/QuestionBaseSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Consumer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Consumer/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Consumer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Consumer/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/templates/ExamPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/exam/templates/ExamPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/templates/ModelExam.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/templates/PersonalCenter.html" beforeDir="false" afterPath="$PROJECT_DIR$/index/templates/PersonalCenter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/index/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/index/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,25 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/django_project_base/QuestionBaseSystem/index/templates",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/django_project_base/QuestionBaseSystem/index/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\django_project_base\QuestionBaseSystem\index\templates" />
@@ -102,6 +113,7 @@
       <workItem from="1668174925989" duration="93000" />
       <workItem from="1668526247836" duration="4694000" />
       <workItem from="1668562815958" duration="5434000" />
+      <workItem from="1668569731959" duration="36549000" />
     </task>
     <task id="LOCAL-00001" summary="solve some problems&#10;8th commit by Fan">
       <created>1668568073190</created>

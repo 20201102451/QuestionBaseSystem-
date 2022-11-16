@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from CollectTestpaper.models import Testpaper
-from Consumer.models import Consumer_testPaper_first, Consumer
+from Consumer.models import Consumer_testPaper_first, Consumer, Consumer_answer_status
 # Create your views here.
 
 def subjectDesc(request):
@@ -8,10 +8,20 @@ def subjectDesc(request):
     return render(request, 'subjectDesc.html', {'useraccount': useraccount})
 def personalCenter(request):
     useraccount = request.session['userNameGet']
-    return render(request, 'PersonalCenter.html', {'useraccount': useraccount})
+    #获取到当前用户的id
+    consumer_id = Consumer.objects.filter(consumer_account=useraccount).values()[0]['consumer_id']
+    #使用当前用户id去用户订阅表中查找到当前用户所订阅的所有试卷
+    testpaperID = Consumer_testPaper_first.objects.filter(consumer=consumer_id)
+    TestData = dict()
+    #将试题数据录入成为ID_name对应的字典['id':'试卷名']
+    for i in testpaperID:
+        TestData[i.testpaper_id] = Testpaper.objects.filter(testpaper_id=i.testpaper_id).first().name
+    #返回页面，将此字典导入，并依赖前端生成页面
+    return render(request, 'PersonalCenter.html', {'useraccount': useraccount,'TestData':TestData})
 def personalCenter2(request):
     useraccount = request.session['userNameGet']
     return render(request, 'PersonalCenter2.html', {'useraccount': useraccount})
+
 #修改index
 def index(request):
     #"userNameGet
@@ -67,7 +77,6 @@ def test(request):
     # request.session.get("userNameGet")--用户名
     consumer_name=request.session.get("userNameGet")
     consumer_id = Consumer.objects.filter(consumer_account=consumer_name).values()[0]['consumer_id']
-    print(consumer_id)
     if len(Consumer_testPaper_first.objects.filter(consumer=consumer_id,testpaper=id))>0:
         status = 1
     count = Consumer_testPaper_first.objects.filter(testpaper_id=id).count()
@@ -76,16 +85,24 @@ def test(request):
 def delete(request):
     id = request.GET.get("id")
     consumer_name=request.session.get("userNameGet")
-    consumer_id = Consumer.objects.filter(consumer_name=consumer_name).values()[0]['consumer_id']
+    consumer_id = Consumer.objects.filter(consumer_account=consumer_name).values()[0]['consumer_id']
     Consumer_testPaper_first.objects.filter(consumer=consumer_id, testpaper_id=id).delete()
+    Consumer_answer_status.objects.filter(consumer_id=consumer_id, testpaper_id=id).delete()
     return redirect("/index/test/?id={}".format(id))
 
 def add(request):
     id = request.GET.get("id")
     consumer_name=request.session.get("userNameGet")
-    consumer_id = Consumer.objects.filter(consumer_name=consumer_name).values()[0]['consumer_id']
-    print(id)
+    consumer_id = Consumer.objects.filter(consumer_account=consumer_name).values()[0]['consumer_id']
     Consumer_testPaper_first.objects.create\
         (consumer=Consumer.objects.filter(consumer_id=consumer_id).first(),
          testpaper=Testpaper.objects.filter(testpaper_id=id).first())
     return redirect("/index/test/?id={}".format(id))
+
+def personalCenterDelete(request):
+    id = request.GET.get("TestpaperID")
+    consumer_name = request.session.get("userNameGet")
+    consumer_id = Consumer.objects.filter(consumer_account=consumer_name).values()[0]['consumer_id']
+    Consumer_testPaper_first.objects.filter(consumer=consumer_id, testpaper_id=id).delete()
+    Consumer_answer_status.objects.filter(consumer_id=consumer_id, testpaper_id=id).delete()
+    return redirect("/index/personalCenter/")

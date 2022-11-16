@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from CollectTestpaper.models import Testpaper
-from Consumer.models import Consumer_testPaper_first, Consumer
+from Consumer.models import Consumer_testPaper_first
 import Consumer.models
 from django.db import transaction
 # Create your views here.

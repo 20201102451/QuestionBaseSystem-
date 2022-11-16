@@ -28,58 +28,12 @@
             <a class="bt_p" href="/index/personalCenter2/">我的题目集</a>
         </div>
         <ul>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
-            <li class="right_context right_li">
-                <a class="" href="#">2020年期末综合测试</a>
-                <p>分</p><p>100</p><p>分数:</p>
-            </li>
+            {% for i in TestData.items %}
+                <li class="right_context right_li">
+                    <a href="/exam/?TestpaperID={{ i.0 }}">{{ i.1}}</a>
+                    <a style="float:right; margin-right: 30px; font-size: 25px;" href="/index/personalCenter/delete/?TestpaperID={{ i.0 }}">删除</a>
+                </li>
+            {% endfor %}
         </ul>
     </div>
     <div class="center_left_text">建议反馈：1348757279@qq.com</div>
