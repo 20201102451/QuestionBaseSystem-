@@ -41,6 +41,12 @@
         .inner_submit:hover{
             background-color: #53cac3;
         }
+        a{
+            color: #12ada9;
+        }
+        a:hover{
+            color: #9bf2ed;
+        }
     </style>
 </head>
 <body>
@@ -143,5 +149,11 @@
     </div>
     <div class="center_left_text">建议反馈：1348757279@qq.com<br>
         <span style="font-size: 25px;margin-top: 10px;color: red">注意：填空题如有多个空，答案需使用顿号“、”隔开！</span></div>
+    <div style="position: absolute;left: 20px;top:1000px">
+        <h3>相似推荐</h3>
+        {% for i in same_recommend_test %}
+        <a href="/index/test/?id={{ i.testpaper_id }}"><div>{{ i.name }}</div></a>
+        {% endfor %}
+    </div>
 </body>
 </html>

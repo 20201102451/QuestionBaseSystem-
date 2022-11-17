@@ -2,7 +2,7 @@ from django.shortcuts import render ,redirect, HttpResponse
 from CollectTestpaper.models import Question, Choice, Gapfill, TrueOrFalse, TestpaperQuestion, Testpaper
 from Consumer.models import Consumer_answer_status,Consumer
 # Create your views here.
-
+import random
 def exam(request):
     TestpaperID = request.GET.get("TestpaperID").strip("/")#GET请求获取试卷ID同时去除尾部携带的“/”
     Consumer_id = Consumer.objects.filter(consumer_account=request.session["userNameGet"]).first().consumer_id#获取用户id
@@ -127,6 +127,27 @@ def exam(request):
     ChoiceScores = ChoiceSignal*ChoiceData[0][5]
     TrueOrFalseScores = TrueOrFalseSignal*TrueOrFalseData[0][1]
     GapfillScores = GapfillSignal*GapfillData[0][1]
+
+    # ==============开始
+    all_test = Testpaper.objects.exclude(testpaper_id=TestpaperID)#取出所有非当前试卷的试卷
+    same_hard_test = []
+    sub_one_hard_test = []
+    #循环取出相同难度的试题和相差为1的试题
+    for i in all_test:
+        # TestpaperData.testpaper_id
+            if i.hard==TestpaperData.hard:
+                same_hard_test.append(i)
+            elif abs(i.hard-TestpaperData.hard)==1:
+                sub_one_hard_test.append(i)
+    try:
+        # 5题目---用随机函数random.sample取出
+        same_recommend_test = random.sample(same_hard_test, 3)#random.sample(list,num)
+        same_recommend_test += random.sample(sub_one_hard_test, 2)
+    except:
+        # 防止数据过少
+        same_recommend_test = all_test[:5]
+    # =====================结束
+
     return render(request,
                   "ExamPage.html",
                   {"ChoiceData": ChoiceData,
@@ -137,4 +158,5 @@ def exam(request):
                    "GapfillScores": GapfillScores,
                    "TestpaperID": TestpaperID,
                    "consumerSumScore": consumerSumScore,
+                   "same_recommend_test": same_recommend_test,
                    })

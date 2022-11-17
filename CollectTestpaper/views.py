@@ -10,7 +10,10 @@ def test(request):
     else:
         global files;
         x_get = request.FILES.get('上传的文件')
-        files = docx.Document(x_get)
+        try:
+            files = docx.Document(x_get)
+        except Exception as e:
+            return HttpResponse("插入失败：上传试卷类型有误！清仔细检查！")
         # testChoice()#获取选择题
         # testJudge()#获取判断题
         # testInput()#获取填空题

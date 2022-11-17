@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>测试</title>
     <link rel="stylesheet" href="/../static/CSS/index.css">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../static/CSS/bootstrap.min.css">
     <style>
         .text_body {
             display: flex;
@@ -54,8 +54,8 @@
             <p class="text" style="margin-left: 0">题目难度：{{ test.get_hard_display }}</p>
         </div>
         <div class="right">
-
-            <div class="text" style="width: 600px">{{ test.intro }}</div>
+            <div class="text">试卷简介：</div>
+            <div class="text" style="width: 600px; margin-left: 30px;">{{ test.intro }}</div>
 
             <div  class="text">出题时间：{{ test.apply_time }}</div>
             <div  class="text">已被订阅人数：{{ count }}  </div>

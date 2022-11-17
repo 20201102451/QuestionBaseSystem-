@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>教育超市</title>
     <link rel="stylesheet" href="/../static/CSS/index.css">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../static/CSS/bootstrap.min.css">
     <style>
         .center {
             width: 600px;
@@ -115,9 +115,9 @@
 </div>
 
 <hr>
-<div class="" style="width: 1300px">
+<div class="" style="width: 1900px; background-color: #ffffff">
     {% for item in all %}
-        <div style="display: inline-block;width: 600px;margin-left: 17px;margin-top: 10px;text-align: center">
+        <div style="display: inline-block;width: 600px;margin-left: 17px;margin-top: 10px;text-align: center;">
             <a href="/index/test/?id={{ item.testpaper_id }}">
                 <p style="margin-left: 50%;" class="left">
                     {{ item.name }}
