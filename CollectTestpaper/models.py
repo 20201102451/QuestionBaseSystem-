@@ -59,6 +59,9 @@ class Choice(models.Model):
     class Meta:
         verbose_name = '选择题'
         verbose_name_plural = '选择题'
+    def dis_Question(self):
+        return self.question_id.stems
+    dis_Question.short_description = "题干"
 
 '''填空题'''
 class Gapfill(models.Model):
@@ -69,6 +72,9 @@ class Gapfill(models.Model):
     class Meta:
         verbose_name = '填空题'
         verbose_name_plural = '填空题'
+    def dis_Question(self):
+        return self.question_id.stems
+    dis_Question.short_description = "题干"
 
 '''判断题'''
 class TrueOrFalse(models.Model):
@@ -79,3 +85,6 @@ class TrueOrFalse(models.Model):
     class Meta:
         verbose_name = '判断题'
         verbose_name_plural = '判断题'
+    def dis_Question(self):
+        return self.question_id.stems
+    dis_Question.short_description = "题干"

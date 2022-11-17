@@ -60,7 +60,7 @@ def exam(request):
                         answer=consumer_answer)
             ChoiceList.append(consumer_answer)
             if consumer_answer == ChoiceList[6]:
-                consumerSumScore+=2
+                consumerSumScore+=Choice.objects.filter(question_id=QuestionData.question_id).first().score
             ChoiceData.append(ChoiceList)
         elif QuestionData.level == 2:#判断题
             TrueOrFalseSignal+=1
@@ -91,7 +91,7 @@ def exam(request):
                         answer=consumer_answer)
             TrueOrFalseList.append(consumer_answer)
             if consumer_answer == TrueOrFalseList[2]:
-                consumerSumScore+=1
+                consumerSumScore+=TrueOrFalse.objects.filter(question_id=QuestionData.question_id).first().score
             TrueOrFalseData.append(TrueOrFalseList)
         else:#填空题
             GapfillSignal+=1
@@ -122,7 +122,7 @@ def exam(request):
                         answer=consumer_answer)
             GapfillList.append(consumer_answer)
             if consumer_answer == GapfillList[2]:
-                consumerSumScore+=3
+                consumerSumScore+=Gapfill.objects.filter(question_id=QuestionData.question_id).first().score
             GapfillData.append(GapfillList)
     ChoiceScores = ChoiceSignal*ChoiceData[0][5]
     TrueOrFalseScores = TrueOrFalseSignal*TrueOrFalseData[0][1]
@@ -138,5 +138,3 @@ def exam(request):
                    "TestpaperID": TestpaperID,
                    "consumerSumScore": consumerSumScore,
                    })
-def exam_answer(request):
-    return render(request, 'ExamAnswer.html')
