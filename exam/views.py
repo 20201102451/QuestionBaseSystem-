@@ -159,4 +159,5 @@ def exam(request):
                    "TestpaperID": TestpaperID,
                    "consumerSumScore": consumerSumScore,
                    "same_recommend_test": same_recommend_test,
+                   "useraccount": request.session["userNameGet"],
                    })
